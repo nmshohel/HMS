@@ -4,23 +4,26 @@ from django.db import models
 
 
 class Accessories(models.Model):
-    item_name = models.CharField(max_length=100)
-    identification_no = models.CharField(max_length=100)
-    model_no = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
-    parchase_date = models.CharField(max_length=100)
-    price = models.CharField(max_length=100)
-    supplier_name = models.CharField(max_length=100)
-    supplier_address = models.CharField(max_length=100)
-    warrenty = models.CharField(max_length=100)
-    user_name = models.CharField(max_length=100)
-    user_designation = models.CharField(max_length=100)
-    department = models.CharField(max_length=100)
-    office_name = models.CharField(max_length=100)
-    mobile_no = models.CharField(max_length=100)
+    accessories_name = models.CharField(max_length=100, blank=True, null=True)
+    identification_no = models.CharField(
+        max_length=100, unique=True, blank=True, null=True)
+    model_no = models.CharField(max_length=100, blank=True, null=True)
+    description = models.CharField(max_length=100, blank=True, null=True)
+    purchase_date = models.CharField(max_length=100, blank=True, null=True)
+    price = models.CharField(max_length=100, blank=True, null=True)
+    accessories_supplier_name_address = models.CharField(
+        max_length=100, blank=True, null=True)
+    warrenty = models.CharField(max_length=100, blank=True, null=True)
+    user_name = models.CharField(max_length=100, blank=True, null=True)
+    user_designation = models.CharField(max_length=100, blank=True, null=True)
+    department = models.CharField(max_length=100, blank=True, null=True)
+    office_name = models.CharField(max_length=100, blank=True, null=True)
+    mobile_no = models.CharField(max_length=100, blank=True, null=True)
+    is_assign = models.BooleanField(default=False)
+    is_condem = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.item_name
+        return str(self.accessories_name)
 
 
 # 01. Item Name:(Desktop Computer, Monitor, CPU, UPS, Server, DVR, NBR, CC Camera)

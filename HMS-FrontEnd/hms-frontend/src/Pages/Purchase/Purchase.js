@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+
 const currencies = [
     {
       value: '01',
@@ -57,7 +58,7 @@ const currencies = [
   ];
 const Purchase = () => {
   
-    const [date, setDate] = React.useState(null);
+   
 
     const [purchaseData, setPurchaseData]=useState({});
     
@@ -71,25 +72,33 @@ const Purchase = () => {
         
 
     }
-  
-    const concateDateData=(purchaseData,date)=>{
-        alert("this is concate date")
-        const obj = Object.assign({}, purchaseData, date);
-        // const newData={purchaseData,date}
-        console.log("dateeeee", date)
-        setDate(obj);
-
-
-    }
-    
     const handlePurchaseSubmit=e=>{
-        concateDateData(purchaseData,date);
-       
-        console.log(purchaseData)
-        alert("submited")
+        
         e.preventDefault();
+        console.log(purchaseData)
+        fetch('http://127.0.0.1:8000/api/accessories/',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(purchaseData)
+        })
+        .then(res=>res.json())
+        // .then(data=>{
+        //   if(data.insertedId)
+        //   {
+        //     setBookingSuccess(true);
+        //     handleBookingClose();
+        //   }
+        // })
+
         
     }
+    // const purchaseAccessories=(purchaseData)=>{
+    //   APIService.purchaseAccessories(purchaseData)
+    //   .then(resp=>console.log(resp))
+
+    // }
 
     return (
             <>
@@ -112,6 +121,7 @@ const Purchase = () => {
                                     // onChange={handleItemNameChange}
                                     helperText="Please select Item Name"
                                     name="accessories_name"
+                                    required
                                    
                                     >
                                     {currencies.map((option) => (
@@ -125,6 +135,7 @@ const Purchase = () => {
                                     label="Identification No" 
                                     variant="outlined"
                                     name="identification_no"
+                                    required
                                     onChange={handleOnchange}
                                     />
                                 </div>
@@ -134,6 +145,7 @@ const Purchase = () => {
                                     label="Model No" 
                                     variant="outlined"
                                     name="model_no"
+                                    required
                                     onChange={handleOnchange} 
 
                                     />
@@ -141,32 +153,28 @@ const Purchase = () => {
                                     id="outlined-multiline-static"
                                     label="Description"
                                     name="description"
+                                    required
                                     onChange={handleOnchange}
                                     multiline
                                     />
                                 </div>
                                 <div>
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                    <DatePicker
-                                        label="Purchase Date"
-                                        value={date}
-                                        name="purchase_date"
-
-                                        // defaultValue={date.toDateString()}
-                                        onChange={(newValue) => {
-                                        setDate(newValue);
-                                        
-
-                                        }}
-                                        renderInput={(params) => <TextField {...params} />}
-                                    />
-                                    </LocalizationProvider>
+                                <TextField 
+                                    id="outlined-basic" 
+                                    label="Purchase Date" 
+                                    onChange={handleOnchange}
+                                    placeholder='DD-MM-YYYY'
+                                
+                                    variant="outlined"
+                                    name="purchase_date"
+                                    required />
                                     <TextField 
                                     id="outlined-basic" 
                                     label="Price" 
                                     onChange={handleOnchange}
                                     variant="outlined"
-                                    name="price" />
+                                    name="price"
+                                    required />
                                 </div>
                                 <div>
                                 <TextField
@@ -176,6 +184,7 @@ const Purchase = () => {
                                     // value={currency}
                                     onChange={handleOnchange}
                                     name="accessories_supplier_name_address"
+                                    required
                                     
                                 
                                     >
@@ -192,7 +201,8 @@ const Purchase = () => {
                                     // value={currency}
                                     onChange={handleOnchange}
                                     name="warrenty"
-                                    helperText="Please select Warrenty"
+                                    required
+                              
                                 
                                     >
                                     {warrenties.map((option) => (
@@ -204,7 +214,7 @@ const Purchase = () => {
                                 </div>
 
                                 <div>
-                                <Button type="submit" variant="contained">Submit</Button>
+                                <Button  type="submit" variant="contained">Submit</Button>
                                 
                                 </div>
                     </form>

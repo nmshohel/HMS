@@ -37,14 +37,15 @@ const Accessories = () => {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
+          <TableCell align="right">S/N</TableCell>    
             <TableCell align="right">Name</TableCell>        
             <TableCell align="right">Identification No</TableCell>
             <TableCell align="right">Model No</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Purchase Date</TableCell>
             <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Supplier Name</TableCell>
-            <TableCell align="right">Address</TableCell>
+            <TableCell align="right">Supplier</TableCell>
+        
             <TableCell align="right">Warrenty</TableCell>
             <TableCell align="right">Office Name</TableCell>
             <TableCell align="right">Department</TableCell>
@@ -59,19 +60,20 @@ const Accessories = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {accessories.map((row) => (
+          {accessories.map((row,index) => (
             <TableRow
-              key={row.identification_no}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">{row.item_name}</TableCell>
+              <TableCell align="right">{index=index+1}</TableCell>
+              <TableCell align="right">{row.accessories_name}</TableCell>
               <TableCell align="right">{row.identification_no}</TableCell>
               <TableCell align="right">{row.model_no}</TableCell>
               <TableCell align="right">{row.description}</TableCell>
-              <TableCell align="right">{row.parchase_date}</TableCell>
+              <TableCell align="right">{row.purchase_date}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.supplier_name}</TableCell>
-              <TableCell align="right">{row.supplier_address}</TableCell>
+              <TableCell align="right">{row.accessories_supplier_name_address}</TableCell>
+           
               <TableCell align="right">{row.warrenty}</TableCell>
               <TableCell align="right">{row.office_name}</TableCell>
               <TableCell align="right">{row.department}</TableCell>
