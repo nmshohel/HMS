@@ -24,13 +24,19 @@ const Navigation = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Hardware Management System
+              
             </Typography>
             <Link style={{textDecoration:'none'}} to="/accessories">
             <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Accessories</Button>
           </Link>
           <Link style={{textDecoration:'none'}} to="/purchase">
-            <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Purhase</Button>
+            <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Purhase Entry</Button>
+          </Link>
+          <Link style={{textDecoration:'none'}} to="/purchaselist">
+            <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Pending Assign</Button>
+          </Link>
+          <Link style={{textDecoration:'none'}} to="/servicing">
+            <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Servicing</Button>
           </Link>
           <Link style={{textDecoration:'none'}} to="/condem">
             <Button style={{textDecoration:'none'}} sx={{color:'white'}} color="inherit">Condem</Button>

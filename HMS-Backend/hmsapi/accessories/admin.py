@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Accessories
+from .models import Accessories, Employee
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ class AccessoriesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Accessories, AccessoriesAdmin)
+admin.site.register(Employee)

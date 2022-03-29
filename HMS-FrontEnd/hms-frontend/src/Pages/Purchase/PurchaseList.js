@@ -11,13 +11,21 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Button } from '@mui/material';
+
+import {
+
+  Link
+} from "react-router-dom";
 
 
 
-const Accessories = () => {
+
+const PurchaseList = () => {
     const [accessories, setAccessories]=useState([]);
+
     useEffect(()=>{
-        fetch('http://127.0.0.1:8000/api/accessories/',{
+        fetch('http://127.0.0.1:8000/api/purchaselist/',{
           method:'GET',
           headers:{
             'Content-Type':'application/json',
@@ -29,10 +37,12 @@ const Accessories = () => {
       
       },[])
 
+
+
     return (
         <div>
         <Navigation/>
-            <h1>Accessories</h1>
+            <h1>Assign Pending</h1>
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -47,14 +57,8 @@ const Accessories = () => {
             <TableCell align="right">Supplier</TableCell>
         
             <TableCell align="right">Warrenty</TableCell>
-            <TableCell align="right">Office Name</TableCell>
-            <TableCell align="right">Department</TableCell>
-            <TableCell align="right">User Name</TableCell>
-            <TableCell align="right">Designation</TableCell>
-            <TableCell align="right">Mobile No</TableCell>
-            <TableCell align="right">Action</TableCell>
-            <TableCell align="right">Action</TableCell>
-            <TableCell align="right">Action</TableCell>
+
+
             <TableCell align="right">Action</TableCell>
 
           </TableRow>
@@ -75,15 +79,18 @@ const Accessories = () => {
               <TableCell align="right">{row.accessories_supplier_name_address}</TableCell>
            
               <TableCell align="right">{row.warrenty}</TableCell>
-              <TableCell align="right">{row.office_name}</TableCell>
-              <TableCell align="right">{row.department}</TableCell>
-              <TableCell align="right">{row.user_name}</TableCell>
-              <TableCell align="right">{row.user_designation}</TableCell>
-              <TableCell align="right">{row.mobile_no}</TableCell>
-              <TableCell align="right">Details</TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right"> </TableCell>
-              <TableCell align="right">Condem</TableCell>
+
+              <TableCell align="right">
+
+              <Link to={`/accessories/assign/${row.id}`}>
+              <Button variant="contained" color="success">Assign</Button>
+              </Link>
+
+
+
+              
+
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -97,4 +104,4 @@ const Accessories = () => {
     );
 };
 
-export default Accessories;
+export default PurchaseList;

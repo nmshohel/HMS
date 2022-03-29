@@ -19,26 +19,21 @@ class Accessories(models.Model):
     department = models.CharField(max_length=100, blank=True, null=True)
     office_name = models.CharField(max_length=100, blank=True, null=True)
     mobile_no = models.CharField(max_length=100, blank=True, null=True)
-    is_assign = models.BooleanField(default=False)
-    is_condem = models.BooleanField(default=False)
+    is_assign = models.BooleanField(default=False, blank=True, null=True)
+    is_condem = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return str(self.accessories_name)
 
 
-# 01. Item Name:(Desktop Computer, Monitor, CPU, UPS, Server, DVR, NBR, CC Camera)
-# 02. Identification No(unique)
-# 03. Model No
-# 04. Description
-# 05. Purchase Data:
-# 06. Price:
-# 07. Supplier Name:
-# 08. Supplier Address
-# 09. Warranty:
+class Employee(models.Model):
 
-# Item Asign:
-# User name:
-# Designation:
-# Department:
-# Office Name:
-# Mobile No:
+    employee_name = models.CharField(max_length=100, blank=True, null=True)
+    designation = models.CharField(max_length=100, blank=True, null=True)
+    department = models.CharField(max_length=100, blank=True, null=True)
+    office_name = models.CharField(max_length=100, blank=True, null=True)
+    mobile_no = models.CharField(max_length=100, blank=True, null=True)
+    is_active = models.BooleanField(default=True, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.employee_name)
