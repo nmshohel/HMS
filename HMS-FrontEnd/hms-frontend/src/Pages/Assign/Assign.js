@@ -25,6 +25,8 @@ const Assign = () => {
         .then(data=>setAssignInfo(data))
     },[])
 
+
+    // for show employee info in form input field 
     useEffect(()=>{
         const uri=`http://127.0.0.1:8000/api/employees/`;
         fetch(uri)
@@ -70,7 +72,7 @@ const Assign = () => {
 
 
 
-    console.log(allemployeeInfo);
+
 
       return (
 <>
